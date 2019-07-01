@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<baramundiDeployScript Version="870" LastChange="17.06.2018 18:40:37">
+<META>
+<INFO Vendor="" Name="" Version="" Author="Selig, Sebastian" Comment=""/>
+<STATICVARS LoadInstallIni="1">
+<BMSVars></BMSVars>
+</STATICVARS>
+</META>
+<ACTIONS>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>---------------------------</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>it-runs.de</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>---------------------------</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>Ersteller: Sebastian Selig</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>Erstellungsdatum: 14.06.2018</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>---------------------------</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>Version: 1.0</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>---------------------------</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>LLDP Informationen abfragen und am Client in baramundi übertragen</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>---------------------------</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Voraussetzungen prüfen/setzen</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Variablen erstellen</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>iniFile</VARNAME>
+<VALUE>{%windir%}\temp\switch.ini</VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Name</VARNAME>
+<VALUE></VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Model</VARNAME>
+<VALUE></VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>VLAN</VARNAME>
+<VALUE></VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Port</VARNAME>
+<VALUE></VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Port1</VARNAME>
+<VALUE></VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Port2</VARNAME>
+<VALUE></VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Debug</VARNAME>
+<VALUE></VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Transfer-Datei erzeugen</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="CreateFile" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<FILENAME>{iniFile}</FILENAME>
+<ENCODING>0</ENCODING>
+<CONTENT></CONTENT>
+<OPTIONS>1</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>tcpdump vorhanden</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="EvalVar" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>tcpdump</VARNAME>
+<SOURCE>FileInfo</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>FileTimes</Param><Value>0</Value></PropertyEntry><PropertyEntry><Param>Name</Param><Value>{DIP}\Tools\tcpdump\tcpdump.exe</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="Comment" level="2" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>tcpdump nicht gefunden</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Conditional" level="3" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+</DATA>
+<CONDITION op1="{tcpdump}" op="=" op2="NOTFOUND" options="0"/>
+</ACTION>
+<ACTION type="EndBDS" level="4" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<RETURNMESSAGE>tcpdump nicht gefunden</RETURNMESSAGE>
+<RETURNMODESTR>0</RETURNMODESTR>
+<RETURNCODESTR></RETURNCODESTR>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Powershell ausführen</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="RunEmbeddedScript" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<SCRIPTLANGUAGE>PowerShell</SCRIPTLANGUAGE>
+<SCRIPT>#requires -version 2
+&lt;#
+
+.SYNOPSIS
+  Read LLDP informations 
+
+.DESCRIPTION
+  &lt;Brief description of script&gt;
+
+.PARAMETER &lt;Parameter_Name&gt;
+    &lt;Brief description of parameter input required. Repeat this attribute if required&gt;
+
+.INPUTS
+  &lt;Inputs if any, otherwise state None&gt;
+
+.OUTPUTS
+  &lt;Outputs if any, otherwise state None - example: Log file stored in C:\Windows\Temp\&lt;name&gt;.log&gt;
+
+.NOTES
+  Version:        1.0
+  Author:         Sebastian Selig
+  Creation Date:  13.06.2018
+  Purpose/Change: Initial script development
+  
+.EXAMPLE
+  &lt;Example goes here. Repeat this attribute for more than one example&gt;
+
+#&gt;
+
+# ---------------------------------------------------------------------------
+# config values
+# ---------------------------------------------------------------------------
+
+# Script path
+$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+$ScriptName = ((Get-Variable MyInvocation).Value).MyCommand.Name
+
+$logDir     = $scriptPath
+$_tcpdump   = &quot;{DIP}\Tools\tcpdump\tcpdump.exe&quot;
+$TMP_File   = [System.IO.Path]::GetTempFileName()
+$iniFile    = &quot;{iniFile}&quot;
+# ---------------------------------------------------------------------------
+# main program starts here
+# ---------------------------------------------------------------------------
+Start-Transcript &quot;$logDir\$ScriptName.log&quot;
+
+# check if tcpdump.exe is there
+if(! (Test-Path $_tcpdump) )
+{
+    Write-Error &quot;tcpdump.exe not found in $ScriptPath&quot;
+    break
+}
+
+# get network adapter
+$DeviceID = Get-WmiObject -Query &quot;SELECT * FROM Win32_NetworkAdapterConfiguration&quot; | ? {$_.MACAddress -eq &quot;{Client:MAC}&quot;} | Select -ExpandProperty SettingID
+
+# run tcpdump
+$_tcpdump = start-process -Filepath $_tcpdump -ArgumentList &quot;-i \Device\$DeviceID -nn -v -s 1500 -c 1 (ether[12:2]==0x88cc or ether[20:2]==0x2000)&quot; -PassThru -RedirectStandardOutput $TMP_File
+
+# kill it after 60 seconds
+if (!$_tcpdump.WaitForExit(60000))
+{
+    $_tcpdump.Kill()
+}
+#================================================================================
+#
+#     LLDP Switch Informations
+#
+#================================================================================
+Select-String -Pattern &quot;System Name TLV \(5\)&quot; -Path $TMP_File | % {
+    $SwitchName = $_.ToString().Split(&quot;:&quot;)
+    $SwitchName = $SwitchName[-1].ToUpper().Trim()
+    Write-Host &quot;System Name found: $SwitchName&quot;
+}
+
+# switch port
+Select-String &quot;Port ID TLV (2)&quot; $TMP_File -Context 0, 1 -SimpleMatch | % {
+    $Port1 = $_.Context.PostContext.split(&quot;:&quot;)
+    $Port1 = $Port1[-1].ToString().Trim()
+    Write-Host &quot;Port: $port1&quot;
+}
+
+# switch port
+Select-String -Pattern &quot;Port Description TLV \(4\)&quot; -Path $TMP_File | % {
+    $Port2 = $_.ToString().Split(&quot;:&quot;)
+    $Port2 = $Port2[-1].ToUpper().Trim()
+    Write-Host &quot;Port: $Port2&quot;
+}
+
+# vlan id
+Select-String -Pattern &quot;port vlan id \(PVID\)&quot; -Path $TMP_File | % {
+    $VLAN = $_.ToString().Split(&quot;:&quot;)
+    $VLAN = $VLAN[-1].ToUpper().Trim()
+    Write-Host &quot;VLAN ID: $VLAN&quot;
+}
+
+# switch description
+Select-String -Pattern &quot;System Description TLV \(6\)&quot; -Context 0,1 -Path $TMP_File | % {
+    $model = $_.ToString().Split(&quot;:&quot;)
+    $model = $model[-1].ToUpper().Trim()
+    Write-Host &quot;Switch Model: $model&quot;
+}
+
+# clean up
+Remove-Item $TMP_File -Force -ErrorAction SilentlyContinue
+if (Get-Process -Name &quot;tcpdump.exe&quot; -ErrorAction SilentlyContinue)
+{
+    Stop-Process -Name &quot;tcpdump.exe&quot; -Force -ErrorAction SilentlyContinue
+}
+
+# save to ini file
+if ( Test-Path $iniFile) 
+{
+    &quot;[switch]&quot;            | Add-Content -Path $iniFile -Force
+    &quot;name=$($SwitchName)&quot; | Add-Content -Path $iniFile -Force
+    &quot;model=$($model)&quot;     | Add-Content -Path $iniFile -Force
+    &quot;vlan=$($VLAN)&quot;       | Add-Content -Path $iniFile -Force
+    &quot;port1=$($port1)&quot;     | Add-Content -Path $iniFile -Force
+    &quot;port2=$($port2)&quot;     | Add-Content -Path $iniFile -Force
+    &quot;&quot;                    | Add-Content -Path $iniFile -Force
+    &quot;[debug]&quot;             | Add-Content -Path $iniFile -Force
+    &quot;logfile=$logDir\$ScriptName.log&quot;     | Add-Content -Path $iniFile -Force
+}
+
+# stop logging
+Stop-Transcript</SCRIPT>
+</DATA>
+<CONDITION op1="{tcpdump}" op="=" op2="FOUND" options="0"/>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Switch Informationen aus Transfer-Datei lesen</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Name</VARNAME>
+<SOURCE>IniFile</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>File</Param><Value>{iniFile}</Value></PropertyEntry><PropertyEntry><Param>Param</Param><Value>name</Value></PropertyEntry><PropertyEntry><Param>Section</Param><Value>switch</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Model</VARNAME>
+<SOURCE>IniFile</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>File</Param><Value>{iniFile}</Value></PropertyEntry><PropertyEntry><Param>Param</Param><Value>model</Value></PropertyEntry><PropertyEntry><Param>Section</Param><Value>switch</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>VLAN</VARNAME>
+<SOURCE>IniFile</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>File</Param><Value>{iniFile}</Value></PropertyEntry><PropertyEntry><Param>Param</Param><Value>vlan</Value></PropertyEntry><PropertyEntry><Param>Section</Param><Value>switch</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Port1</VARNAME>
+<SOURCE>IniFile</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>File</Param><Value>{iniFile}</Value></PropertyEntry><PropertyEntry><Param>Param</Param><Value>port1</Value></PropertyEntry><PropertyEntry><Param>Section</Param><Value>switch</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Port2</VARNAME>
+<SOURCE>IniFile</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>File</Param><Value>{iniFile}</Value></PropertyEntry><PropertyEntry><Param>Param</Param><Value>port2</Value></PropertyEntry><PropertyEntry><Param>Section</Param><Value>switch</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Debug Information auslesen</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Debug</VARNAME>
+<SOURCE>IniFile</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>File</Param><Value>{iniFile}</Value></PropertyEntry><PropertyEntry><Param>Param</Param><Value>logfile</Value></PropertyEntry><PropertyEntry><Param>Section</Param><Value>debug</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Überprüfen der Daten</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Name nicht gefunden</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Conditional" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+</DATA>
+<CONDITION op1="{Name}" op="=" op2="" options="0"/>
+</ACTION>
+<ACTION type="EndBDS" level="3" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<RETURNMESSAGE>Name nicht gefunden - Logfile {Debug}</RETURNMESSAGE>
+<RETURNMODESTR>0</RETURNMODESTR>
+<RETURNCODESTR></RETURNCODESTR>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Model nicht gefunden</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Conditional" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+</DATA>
+<CONDITION op1="{Model}" op="=" op2="" options="0"/>
+</ACTION>
+<ACTION type="EndBDS" level="3" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<RETURNMESSAGE>Model nicht gefunden - Logfile {Debug}</RETURNMESSAGE>
+<RETURNMODESTR>0</RETURNMODESTR>
+<RETURNCODESTR></RETURNCODESTR>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>VLAN nicht gefunden</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Conditional" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+</DATA>
+<CONDITION op1="{VLAN}" op="&lt;=" op2="0" options="0"/>
+</ACTION>
+<ACTION type="EndBDS" level="3" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<RETURNMESSAGE>VLAN nicht gefunden - Logfile {Debug}</RETURNMESSAGE>
+<RETURNMODESTR>0</RETURNMODESTR>
+<RETURNCODESTR></RETURNCODESTR>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Port1 und Port 2 gleich und nicht 0</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Conditional" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+</DATA>
+<CONDITION op1="{Port1}" op="=" op2="{Port2}" options="0"/>
+</ACTION>
+<ACTION type="Conditional" level="3" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+</DATA>
+<CONDITION op1="{Port1}" op="&gt;" op2="0" options="0"/>
+</ACTION>
+<ACTION type="SetVar" level="4" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Port</VARNAME>
+<VALUE>{Port1}</VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Port1 nicht gefunden</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Conditional" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+</DATA>
+<CONDITION op1="{Port1}" op="&lt;=" op2="0" options="0"/>
+</ACTION>
+<ACTION type="SetVar" level="3" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Port</VARNAME>
+<VALUE>{Port2}</VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Port2 nicht gefunden</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Conditional" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+</DATA>
+<CONDITION op1="{Port2}" op="&lt;=" op2="0" options="0"/>
+</ACTION>
+<ACTION type="SetVar" level="3" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Port</VARNAME>
+<VALUE>{Port1}</VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Port nicht gefunden</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Conditional" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+</DATA>
+<CONDITION op1="{Port}" op="&lt;=" op2="0" options="0"/>
+</ACTION>
+<ACTION type="EndBDS" level="3" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<RETURNMESSAGE>Port nicht gefunden - Logfile {Debug}</RETURNMESSAGE>
+<RETURNMODESTR>0</RETURNMODESTR>
+<RETURNCODESTR></RETURNCODESTR>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Übertragen der Daten</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Name</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="LaunchProcess" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<COMMAND>&quot;{BMAPath}\bmacmd.exe&quot;</COMMAND>
+<PARAM>/Cmd:SetCustomVar /Category:&quot;Lokation&quot; /Name:&quot;Netzwerk Switch&quot; /Value:&quot;{Name}&quot;</PARAM>
+<RETURNCODES>0</RETURNCODES>
+<VARNAME></VARNAME>
+<PIDVARNAME></PIDVARNAME>
+<OPTIONS>1</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Model</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="LaunchProcess" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<COMMAND>&quot;{BMAPath}\bmacmd.exe&quot;</COMMAND>
+<PARAM>/Cmd:SetCustomVar /Category:&quot;Lokation&quot; /Name:&quot;Netzwerk Switch Modell&quot; /Value:&quot;{Model}&quot;</PARAM>
+<RETURNCODES>0</RETURNCODES>
+<VARNAME></VARNAME>
+<PIDVARNAME></PIDVARNAME>
+<OPTIONS>1</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>VLAN</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="LaunchProcess" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<COMMAND>&quot;{BMAPath}\bmacmd.exe&quot;</COMMAND>
+<PARAM>/Cmd:SetCustomVar /Category:&quot;Lokation&quot; /Name:&quot;Netzwerk VLAN&quot; /Value:&quot;{VLAN}&quot;</PARAM>
+<RETURNCODES>0</RETURNCODES>
+<VARNAME></VARNAME>
+<PIDVARNAME></PIDVARNAME>
+<OPTIONS>1</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="1" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Port</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="LaunchProcess" level="2" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<COMMAND>&quot;{BMAPath}\bmacmd.exe&quot;</COMMAND>
+<PARAM>/Cmd:SetCustomVar /Category:&quot;Lokation&quot; /Name:&quot;Netzwerkport&quot; /Value:&quot;{Port}&quot;</PARAM>
+<RETURNCODES>0</RETURNCODES>
+<VARNAME></VARNAME>
+<PIDVARNAME></PIDVARNAME>
+<OPTIONS>1</OPTIONS>
+</DATA>
+</ACTION>
+</ACTIONS>
+</baramundiDeployScript>

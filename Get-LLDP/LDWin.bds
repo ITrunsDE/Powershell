@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<baramundiDeployScript Version="870" LastChange="13.06.2018 11:58:11">
+<META>
+<INFO Vendor="" Name="" Version="" Author="Gering, Sascha" Comment=""/>
+<STATICVARS LoadInstallIni="1">
+<BMSVars></BMSVars>
+</STATICVARS>
+</META>
+<ACTIONS>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>---------------------------</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>gering.it</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>---------------------------</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>Ersteller: Sascha Gering</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>Erstellungsdatum: 13.06.2018</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>---------------------------</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>Version: 1.0</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>---------------------------</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>Inventarisierung des Switch Ports des jeweiligen PCs</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>---------------------------</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>--- Konfiguration ---</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>tempDir</VARNAME>
+<VALUE>C:\Windows\Temp\LDWin</VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>VarCat</VARNAME>
+<VALUE>Lokation</VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>VarName</VARNAME>
+<VALUE>Netzwerkport</VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Port</VARNAME>
+<VALUE>10081</VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Username</VARNAME>
+<VALUE>username@domain</VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="SetVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Password</VARNAME>
+<VALUE></VALUE>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>--- Konfiguration Ende ---</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>LDWin starten</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="LaunchProcess" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<COMMAND>{DIP}\Apl\LinkDiscovery\LDWin.exe</COMMAND>
+<PARAM></PARAM>
+<RETURNCODES>0</RETURNCODES>
+<VARNAME></VARNAME>
+<PIDVARNAME></PIDVARNAME>
+<OPTIONS>0</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>GUI Aktionen</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="KeyboardMouseLock" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<KEYBOARDMOUSELOCK>true</KEYBOARDMOUSELOCK></DATA>
+</ACTION>
+<ACTION type="GUIAction" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<CONTROL type="ComboBox"><Action type="ComboBoxSelectItem"><Properties><PropertyEntry><Param>Element</Param><Value>Ethernet</Value></PropertyEntry></Properties></Action></CONTROL><ControlPath><TopWindowClass active="1">AutoIt v3 GUI</TopWindowClass><TopWindowCaption active="1">Link Discovery for Windows</TopWindowCaption><TopWindowPos active="0">779,330</TopWindowPos><TopWindowSize active="0">566,462</TopWindowSize><TopWindowStyle active="0">0x50010203,0x18000000</TopWindowStyle><TopWindowStyleEx active="0">0x00000000,0x00000000</TopWindowStyleEx><ControlType active="1">ComboBox</ControlType><ControlCaption active="0">*</ControlCaption><ControlIndex active="0">3</ControlIndex><ControlId active="0">5</ControlId><ControlPos active="0">153,64</ControlPos><ControlSize active="0">350,21</ControlSize><ControlStyle active="1">0x50010203,0x18000000</ControlStyle><ControlStyleEx active="0">0x00000000,0x00000000</ControlStyleEx><ControlTabOrder active="0">0</ControlTabOrder><MSAAIndex active="0"></MSAAIndex><MSAARole active="0"></MSAARole><MSAAName active="0"></MSAAName><MSAADescription active="0"></MSAADescription><MSAAValue active="0"></MSAAValue><MSAAState active="0"></MSAAState><MSAAPos active="0"></MSAAPos><MSAASize active="0"></MSAASize><MSAADefaultAction active="0"></MSAADefaultAction><MSAAChildCount active="0"></MSAAChildCount><MSAAHelpText active="0"></MSAAHelpText><MSAAShortcut active="0"></MSAAShortcut><ProcessName active="0">LDWin.exe</ProcessName><FindInvisibleControl>0</FindInvisibleControl></ControlPath><TIMEOUT>30</TIMEOUT>
+</DATA>
+</ACTION>
+<ACTION type="GUIAction" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<CONTROL type="Button"><Action type="ButtonClick"><Properties><PropertyEntry><Param>ClickOptionBringToFront</Param><Value>0</Value></PropertyEntry></Properties></Action></CONTROL><ControlPath><TopWindowClass active="1">AutoIt v3 GUI</TopWindowClass><TopWindowCaption active="1">Link Discovery for Windows</TopWindowCaption><TopWindowPos active="0">779,330</TopWindowPos><TopWindowSize active="0">566,462</TopWindowSize><TopWindowStyle active="0">0x50010000,0x18000000</TopWindowStyle><TopWindowStyleEx active="0">0x00000000,0x00000000</TopWindowStyleEx><ControlType active="1">Button</ControlType><ControlCaption active="1">Get Link Data</ControlCaption><ControlIndex active="0">7</ControlIndex><ControlId active="0">9</ControlId><ControlPos active="0">98,139</ControlPos><ControlSize active="0">100,25</ControlSize><ControlStyle active="1">0x50010000,0x18000000</ControlStyle><ControlStyleEx active="0">0x00000000,0x00000000</ControlStyleEx><ControlTabOrder active="0">1</ControlTabOrder><MSAAIndex active="0"></MSAAIndex><MSAARole active="0"></MSAARole><MSAAName active="0"></MSAAName><MSAADescription active="0"></MSAADescription><MSAAValue active="0"></MSAAValue><MSAAState active="0"></MSAAState><MSAAPos active="0"></MSAAPos><MSAASize active="0"></MSAASize><MSAADefaultAction active="0"></MSAADefaultAction><MSAAChildCount active="0"></MSAAChildCount><MSAAHelpText active="0"></MSAAHelpText><MSAAShortcut active="0"></MSAAShortcut><ProcessName active="0">LDWin.exe</ProcessName><FindInvisibleControl>0</FindInvisibleControl></ControlPath><TIMEOUT>60</TIMEOUT>
+</DATA>
+</ACTION>
+<ACTION type="GUIAction" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<CONTROL type="Button"><Action type="ButtonClick"><Properties><PropertyEntry><Param>ClickOptionBringToFront</Param><Value>0</Value></PropertyEntry></Properties></Action></CONTROL><ControlPath><TopWindowClass active="1">AutoIt v3 GUI</TopWindowClass><TopWindowCaption active="1">Link Discovery for Windows</TopWindowCaption><TopWindowPos active="0">779,330</TopWindowPos><TopWindowSize active="0">566,462</TopWindowSize><TopWindowStyle active="0">0x50010000,0x18000000</TopWindowStyle><TopWindowStyleEx active="0">0x00000000,0x00000000</TopWindowStyleEx><ControlType active="1">Button</ControlType><ControlCaption active="1">Save Link Data</ControlCaption><ControlIndex active="0">8</ControlIndex><ControlId active="0">10</ControlId><ControlPos active="0">208,139</ControlPos><ControlSize active="0">100,25</ControlSize><ControlStyle active="1">0x50010000,0x18000000</ControlStyle><ControlStyleEx active="0">0x00000000,0x00000000</ControlStyleEx><ControlTabOrder active="0">2</ControlTabOrder><MSAAIndex active="0"></MSAAIndex><MSAARole active="0"></MSAARole><MSAAName active="0"></MSAAName><MSAADescription active="0"></MSAADescription><MSAAValue active="0"></MSAAValue><MSAAState active="0"></MSAAState><MSAAPos active="0"></MSAAPos><MSAASize active="0"></MSAASize><MSAADefaultAction active="0"></MSAADefaultAction><MSAAChildCount active="0"></MSAAChildCount><MSAAHelpText active="0"></MSAAHelpText><MSAAShortcut active="0"></MSAAShortcut><ProcessName active="0">LDWin.exe</ProcessName><FindInvisibleControl>0</FindInvisibleControl></ControlPath><TIMEOUT>30</TIMEOUT>
+</DATA>
+</ACTION>
+<ACTION type="GUIAction" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<CONTROL type="EditField"><Action type="SetText"><Properties><PropertyEntry><Param>Focus</Param><Value>TRUE</Value></PropertyEntry><PropertyEntry><Param>TextToSet</Param><Value>{tempDir}\LinkData.txt</Value></PropertyEntry></Properties></Action></CONTROL><ControlPath><TopWindowClass active="1">#32770</TopWindowClass><TopWindowCaption active="1">Save Link Data to</TopWindowCaption><TopWindowPos active="0">0,0</TopWindowPos><TopWindowSize active="0">960,600</TopWindowSize><TopWindowStyle active="0">0x50000380,0x18000000</TopWindowStyle><TopWindowStyleEx active="0">0x00000000,0x00000000</TopWindowStyleEx><ControlType active="1">Edit</ControlType><ControlCaption active="0">*</ControlCaption><ControlIndex active="0">1/1/1/1/1</ControlIndex><ControlId active="0">1001</ControlId><ControlPos active="0">136,489</ControlPos><ControlSize active="0">791,17</ControlSize><ControlStyle active="1">0x50000380,0x18000000</ControlStyle><ControlStyleEx active="0">0x00000000,0x00000000</ControlStyleEx><ControlTabOrder active="0">-1</ControlTabOrder><MSAAIndex active="0"></MSAAIndex><MSAARole active="0"></MSAARole><MSAAName active="0"></MSAAName><MSAADescription active="0"></MSAADescription><MSAAValue active="0"></MSAAValue><MSAAState active="0"></MSAAState><MSAAPos active="0"></MSAAPos><MSAASize active="0"></MSAASize><MSAADefaultAction active="0"></MSAADefaultAction><MSAAChildCount active="0"></MSAAChildCount><MSAAHelpText active="0"></MSAAHelpText><MSAAShortcut active="0"></MSAAShortcut><ProcessName active="0">LDWin.exe</ProcessName><FindInvisibleControl>0</FindInvisibleControl></ControlPath><TIMEOUT>30</TIMEOUT>
+</DATA>
+</ACTION>
+<ACTION type="GUIAction" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<CONTROL type="Button"><Action type="ButtonClick"><Properties><PropertyEntry><Param>ClickOptionBringToFront</Param><Value>0</Value></PropertyEntry></Properties></Action></CONTROL><ControlPath><TopWindowClass active="1">#32770</TopWindowClass><TopWindowCaption active="1">Save Link Data to</TopWindowCaption><TopWindowPos active="0">0,0</TopWindowPos><TopWindowSize active="0">960,600</TopWindowSize><TopWindowStyle active="0">0x50030000,0x18000000</TopWindowStyle><TopWindowStyleEx active="0">0x00000004,0x00000000</TopWindowStyleEx><ControlType active="1">Button</ControlType><ControlCaption active="1">&amp;Speichern</ControlCaption><ControlIndex active="0">3</ControlIndex><ControlId active="0">1</ControlId><ControlPos active="0">743,554</ControlPos><ControlSize active="0">92,26</ControlSize><ControlStyle active="1">0x50030000,0x18000000</ControlStyle><ControlStyleEx active="0">0x00000004,0x00000000</ControlStyleEx><ControlTabOrder active="0">5</ControlTabOrder><MSAAIndex active="0"></MSAAIndex><MSAARole active="0"></MSAARole><MSAAName active="0"></MSAAName><MSAADescription active="0"></MSAADescription><MSAAValue active="0"></MSAAValue><MSAAState active="0"></MSAAState><MSAAPos active="0"></MSAAPos><MSAASize active="0"></MSAASize><MSAADefaultAction active="0"></MSAADefaultAction><MSAAChildCount active="0"></MSAAChildCount><MSAAHelpText active="0"></MSAAHelpText><MSAAShortcut active="0"></MSAAShortcut><ProcessName active="0">LDWin.exe</ProcessName><FindInvisibleControl>0</FindInvisibleControl></ControlPath><TIMEOUT>30</TIMEOUT>
+</DATA>
+</ACTION>
+<ACTION type="KeyboardMouseLock" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<KEYBOARDMOUSELOCK>false</KEYBOARDMOUSELOCK></DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Erhobenen Daten weiterverarbeiten</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>Data</VARNAME>
+<SOURCE>TextFile</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>Index</Param><Value/></PropertyEntry><PropertyEntry><Param>Name</Param><Value>C:\Windows\temp\LinkData.txt</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>SwitchPort</VARNAME>
+<SOURCE>StringToken</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>Delimiter</Param><Value>Switch Port:</Value></PropertyEntry><PropertyEntry><Param>Index</Param><Value>2</Value></PropertyEntry><PropertyEntry><Param>String</Param><Value>{Data}</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>SwitchPort</VARNAME>
+<SOURCE>StringToken</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>Delimiter</Param><Value>Switch Model</Value></PropertyEntry><PropertyEntry><Param>Index</Param><Value>1</Value></PropertyEntry><PropertyEntry><Param>String</Param><Value>{SwitchPort}</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>--- httpMOC ---</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="DownloadFile" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<URL>http://{server}:{port}/httpMoc/httpMoc.asmx/Login?username={Username}&amp;password={Password}</URL>
+<FILENAME>{tempDir}\Login.xml</FILENAME>
+<OPTIONS>1</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>LoginID</VARNAME>
+<SOURCE>XML</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>Attribute</Param><Value>loginid</Value></PropertyEntry><PropertyEntry><Param>Default</Param><Value>NOTFOUND</Value></PropertyEntry><PropertyEntry><Param>Name</Param><Value>{tempDir}\Login.xml</Value></PropertyEntry><PropertyEntry><Param>Path</Param><Value>/mocdata</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>LoginStatus</VARNAME>
+<SOURCE>XML</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>Attribute</Param><Value>status</Value></PropertyEntry><PropertyEntry><Param>Default</Param><Value>NOTFOUND</Value></PropertyEntry><PropertyEntry><Param>Name</Param><Value>{tempDir}\Login.xml</Value></PropertyEntry><PropertyEntry><Param>Path</Param><Value>/mocdata</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="DownloadFile" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<URL>http://{server}:{port}/httpMoc/httpMoc.asmx/SetClientVariable?dnsname={CLIENT}&amp;category={VarCat}&amp;name={VarName}&amp;val={SwitchPort}&amp;loginid={LoginID}</URL>
+<FILENAME>{tempDir}\SetClientVariable.xml</FILENAME>
+<OPTIONS>1</OPTIONS>
+</DATA>
+</ACTION>
+<ACTION type="EvalVar" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VARNAME>SetStatus</VARNAME>
+<SOURCE>XML</SOURCE>
+<OPTIONS>0</OPTIONS>
+<Properties><PropertyEntry><Param>Attribute</Param><Value>status</Value></PropertyEntry><PropertyEntry><Param>Default</Param><Value>NOTFOUND</Value></PropertyEntry><PropertyEntry><Param>Name</Param><Value>{tempDir}l\SetClientVariable.xml</Value></PropertyEntry><PropertyEntry><Param>Path</Param><Value>/mocdata</Value></PropertyEntry></Properties></DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<VALUE>--- httpMOC Ende ---</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="Comment" level="0" breakpoint="0" ignore_error="0" comment="1" is_included="0">
+<DATA>
+<VALUE>Script Ende</VALUE>
+</DATA>
+</ACTION>
+<ACTION type="TerminateProcess" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<NAME>LDWin.exe</NAME>
+<OPTIONS>0</OPTIONS>
+<RETURNCODE>0</RETURNCODE>
+</DATA>
+</ACTION>
+<ACTION type="DeleteFolder" level="1" breakpoint="0" ignore_error="0" comment="0" is_included="0">
+<DATA>
+<NAME>{tempDir}</NAME>
+</DATA>
+</ACTION>
+</ACTIONS>
+</baramundiDeployScript>
